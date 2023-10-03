@@ -1,0 +1,410 @@
+*{
+    padding: 0;
+    margin: 0;
+    /* background-image: url("background_image.jpg"); */
+    /* background-color: black; */
+}
+/* .header{
+    background-image: url("/public/photos/background_image.jpg");
+    background-color: #cccccc;
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 800px;
+  } */
+.header{
+    width: 100%;
+    height: 400px;
+    /* background-color: rgb(129, 151, 247); */
+    
+background-image: linear-gradient(0deg, rgb(227, 229, 240) 0%, rgb(196, 203, 235)100%);
+
+    
+    
+}
+.firstquote{
+    text-align: center;
+    height: 50px;
+    color: white;
+    font-size: 50px;
+    background-color: rgb(25, 57, 199);
+}
+
+.headerlogo{
+    display: flex;
+    gap: 24%;
+    margin-top: 5px;
+    height: 280px;
+    
+}
+
+.nav{
+    display: flex;
+    gap: 24%;
+    margin-top: 5px;
+    height: 280px;
+    
+}
+.umeed_logo{
+    height: 260px;
+    width: 260px;
+    
+}
+.rec_logo{
+    height: 250px;
+    width: 250px;
+    
+}
+.logo img{
+    border-radius: 200px;
+}
+.rec_logo{
+    position: absolute;
+    right: 0%;
+    border-radius: 50px;
+}
+.welcome_quote{
+    align-items: center;
+    margin-top: 50px;
+    
+}
+.welcome_quote h4{
+    font-size: 50px;
+    text-align: center;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+
+
+/* .header {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+  } */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+.homebar{
+    display: flex;
+    height:60px;
+    /* border: 2px solid rgb(25, 57, 199); */
+    text-decoration: none;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    
+}
+.inhomebar{
+    /* height:1em; */
+    width: 20%;
+    font-size: 40px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    
+    /* margin-top: 8px; */
+    
+}
+.inhomebar a{
+    text-decoration: none;
+    color: black;
+
+}
+.inhomebar:hover{
+    background-color: rgb(68, 99, 240);
+    color: white;
+    
+    a{
+        color: white;
+
+    }
+    
+}
+.inhomebar a:hover{
+    background-color: rgb(68, 99, 240);
+    color: white;
+}
+
+/* text animation start here */
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+.hidden {
+  opacity:0;
+}
+.console-container {
+ 
+  font-family:Khula;
+  font-size:6em;
+  text-align:center;
+  height:20px;
+  width:600px;
+  display:block;
+  position:absolute;
+  color:white;
+  
+  margin:auto;
+}
+.console-underscore {
+  display:inline-block;
+  position:relative;
+  top:-0.14em;
+  
+}
+
+/* text animation ends here */
+.slogan{
+    position: absolute;
+    top: 20%;
+    font-size: 3em;
+    text-align: center;
+}
+
+.foot{
+    /* position: absolute; */
+    bottom: 0%;
+    background-color: rgb(48, 47, 47);
+    height: 200px;
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    
+
+
+}
+.foot h4{
+    font-size: 50px;
+}
+.fa-brands{
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-top: 0.5em;
+    color: white;
+    height: 20px;
+}
+
+
+
+/* educators styling */
+
+.batch{
+    text-align: center;
+}
+.teachers-heading{
+    display: flex;
+}
+
+.teacher-card{
+    height: 40em;
+    width: 20%;
+    border: 3px solid black;
+    margin: 4em;
+    border-radius: 3em;
+    background-color: rgba(149, 165, 238, 0.918);
+}
+.teacher-card{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+.card-photo img{
+    height: 350px;
+    width: 350px;
+    border: 3px solid black;
+    border-radius: 3em;
+}
+
+.card-name{
+    text-align: center;
+    font-weight: bold;
+}
+.card-about{
+    text-align: center;
+    font-weight: bold;
+}
+.about-us{
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-text{
+    background-color: rgb(201, 208, 238);
+    text-align: center;
+    color: rgb(51, 78, 196);
+    font-size: 60px;
+    font-weight: bolder;
+    margin: 0%;
+    padding: 0%;
+}
+.vision-text{
+    background-color: rgb(182, 193, 240);
+    text-align: center;
+    color: rgb(51, 78, 196);
+    font-size: 60px;
+    font-weight: bolder;
+    margin: 0%;
+    padding: 0%;
+}
+.mission-text{
+    background-color: rgb(162, 176, 238);
+    text-align: center;
+    color: rgb(51, 78, 196);
+    font-size: 60px;
+    font-weight: bolder;
+    margin: 0%;
+    padding: 0%;
+}
+
+.contact-page{
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgb(160, 171, 223) 0%, rgb(216, 220, 238) 100%);
+}
+.about-content{
+    background-color: rgb(201, 208, 238);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    border: 1px solid rgb(201, 208, 238);
+}
+.vision-content{
+    background-color: rgb(182, 193, 240);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    border: 1px solid rgb(182, 193, 240);
+    margin: 0%;
+    padding: 0%;
+}
+.mission-content{
+    background-color: rgb(162, 176, 238);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    border: 1px solid rgb(162, 176, 238);
+    margin: 0%;
+    padding: 0%;
+}
+
+.about-content p{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.vision-content p{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.mission-content p{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    
+}
+
+.contact-page{
+    display: flex;
+
+}
+.contact-us{
+    width: 70%;
+}
+.querry{
+    
+    
+}
+.form-querry{
+    margin: 5em;
+    display: grid;
+    width: 22em;
+}
+.form-querry h3{
+    color: rgb(25, 57, 199);
+    font-weight: 400;
+    font-size: 30px;
+}
+.form-querry h4{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    font-size: 40px;
+}
+.form-querry input{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    height: 50px;
+    
+    font-size: 20px;
+    border-radius: 0.5em;
+    background-color: rgb(255, 255, 255);
+    border: 3px solid black;
+}
+.form-querry textarea{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    height: 20em;
+    font-size: 20px;
+    border-radius: 0.5em;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255);
+}
+.director-card-name{
+    color: black;
+    font-weight: bolder;
+    font-size: 50px;
+    text-align: center;
+}
+.director-card hr{
+    border:2px solid black;
+}
+.director-card-post{
+    color: black;
+    font-weight:400;
+    font-size: 25px;
+    text-align: center;
+}
+.director-card-contact-phone{
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+.director-card-contact-email{
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+.form-querry button{
+    background-color:rgb(25, 57, 199) ;
+    color: white;
+    height: 3em;
+    border-radius: 2em;
+    margin-top: 1em;
+}
+
+.mapbuild{
+    height: 100%;
+    margin: 10px;
+    padding: 10px;
+    
+    display: grid;
+
+}
+.map{
+    height: 450px;
+    width: 700px;
+    border: 3px solid black;
+}
+
+
+
