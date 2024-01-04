@@ -1,89 +1,70 @@
-// const express =require("express");
-// const https = require("https");
-// const bodyParser= require("body-parser");
-// const app= express();
-
-
-// app.use(bodyParser.urlencoded({extended:true}));
-// app.use(express.static("public"));
-// app.get("/",function(req,res){
-
-//     res.sendFile(__dirname+"/index.html");
-//     app.post("/",function(req,res){
-//         console.log(req.body.cityname);
-//         //console.log("Post request received")
-        
-//         const url="https://api.openweathermap.org/data/2.5/weather?appid=95670849c9a77233957cc1e41d0fe27f&q=Robertsganj&units=metric"
-//         https.get(url,function(response){
-        
-
-//         response.on("data",function(data){
-//             // console.log(data);
-//             const weatherData=JSON.parse(data)
-//             console.log(weatherData)
-//             const tempData=weatherData.main.temp
-//             console.log(tempData,"C")
-//             console.log(weatherData.weather[0].description)
-//             const iconid=weatherData.weather[0].icon
-//             const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
-
-//             // const object={
-//             //     name:"pk78",
-//             //     favFood:"rajma"
-//             // }
-//             // console.log(JSON.stringify(object))
-//             res.write("<h1> The weather is currently "+weatherData.weather[0].description+"</h1>")
-//             res.write("<h3>The temperature of "+req.body.cityname+" is "+tempData+" degree celsius"+"</h3>")
-//             res.write("<img src="+imgLogo+">")
-//             res.send()
-//         })
-//     })
-//     // res.send("Server is open and running.");
-
-//     })
-
-
-
-    
-    
-// })
-
-// app.listen(3000,function(){
-//     console.log("App started at port 3000");
-// })
 
 
 
 const express =require("express");
 const bodyParser = require("body-parser");
+const https= require("https");
 const ejs=require("ejs");
+const nodemailer = require("nodemailer");
 
 
 const app=express();
+const testAccount = nodemailer.createTestAccount();
+var tempData ;
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 
+
+
+
 app.get("/",function(req,res){
-    
-    res.render("home");
+
+    var tempData ;
+        const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("home",{temperatureData:tempData,temperatureImgLogo:iconid});
+        })
+    });
+    // console.log(tempData,"C")
+    // res.render("home",{temperatureData:tempData});
 
 
 });
 
-// app.post("/",function(req,res){
-//     res.redirect("/");
-// });
+
 
 
 
 app.get("/contact",function(req,res){
 
     // res.sendFile(__dirname+"/views/contact.ejs");
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
 
-    res.render("contact");
+            
+            res.render("contact",{temperatureData:tempData,temperatureImgLogo:iconid});
+        })
+    });
+
+    
 
 
 });
@@ -96,42 +77,345 @@ app.post("/contact",function(req,res){
     console.log(querryName);
     console.log(querryEmail);
     console.log(querryWrite);
+
+    
+
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+            user: 'freddie.ondricka42@ethereal.email',
+            pass: 'JVKEBV9J2Wya9s4cPK'
+        }
+    });
+    let message = {
+        from: 'Sender Name <nitinkushwaha1231@gmail.com>',
+        to: 'Recipient <priyanshukushwaha311@gmail.com>',
+        subject: 'Querry related to umeed',
+        text: querryWrite,
+        html: querryWrite,
+    };
+
+
+    transporter.sendMail(message, (err, info) => {
+        if (err) {
+            console.log('Error occurred. ' + err.message);
+            return process.exit(1);
+        }
+
+        console.log('Message sent: %s', info.messageId);
+        // Preview only available when sending through an Ethereal account
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    });
+
+
+
+
+
     
     // res.send("Successfully")
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+    https.get(url,function(response){
+        response.on("data",function(data){
+        // console.log(data);
+        const weatherData=JSON.parse(data)
+        tempData=weatherData.main.temp;
+        const iconid=weatherData.weather[0].icon
+        const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
 
-    res.redirect("/contact");
+        
+        res.render("contact",{temperatureData:tempData,temperatureImgLogo:iconid});
+    })
+});
+
+
+   
 
    
 });
 
 
 app.get("/about",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("about",{temperatureData:tempData,temperatureImgLogo:iconid});
+        })
+    });
     
-    res.render("about");
+    
 
 
 });
-app.get("/educators",function(req,res){
+app.get("/login",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("login",{temperatureData:tempData,temperatureImgLogo:iconid});
+        })
+    });
     
-    res.render("educators");
+    
 
 
 });
-app.get("/facility",function(req,res){
+app.get("/academics/educators",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("educators",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
     
-    res.render("facility");
+    
 
 
+});
+app.get("/academics/children",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("children",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
+    
+
+
+});
+
+app.get("/academics/currentpost",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data);
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("currentpost",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+
+});
+
+
+app.get("/academics/timetable",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data);
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("timetable",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+
+});
+app.get("/academics/classes",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data);
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("classes",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+
+});
+
+app.get("/achievement/gallery",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("gallery",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
+    
+
+
+});
+
+app.get("/acheivement/results",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("results",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
+    
+
+
+});
+app.get("/facility/support",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("support",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
+});
+
+app.get("/facility/sport",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("sport",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
+});app.get("/facility/exam",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("exam",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
+});app.get("/facility/library",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("library",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
+    
 });
 app.get("/achievement",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("achievement",{temperatureData:tempData,temperatureImgLogo:imgLogo});
+        })
+    });
     
-    res.render("achievement");
+
 
 
 });
 app.get("/academics",function(req,res){
+    var tempData ;
+    const url="https://api.openweathermap.org/data/2.5/weather?appid=d68b18a3dc51d1bd2f30d2db951db030&q=robertsganj&units=metric"
+        https.get(url,function(response){
+            response.on("data",function(data){
+            // console.log(data);
+            const weatherData=JSON.parse(data)
+            tempData=weatherData.main.temp;
+            const iconid=weatherData.weather[0].icon
+            const imgLogo="https://openweathermap.org/img/wn/"+iconid+"@2x.png"
+
+            
+            res.render("academics",{temperatureData:tempData,temperatureImgLogo:iconid});
+        })
+    });
     
-    res.render("academics");
+    
 
 
 });

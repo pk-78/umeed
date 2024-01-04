@@ -1,17 +1,61 @@
 <footer>
+
+
+
+
     <div class="foot">
         <h4>A hope for better Education </h4>
-        <a href="https://www.facebook.com/umeedrecsonbhadra/"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/umeed_recs/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@umeed3124"><i class="fa-brands fa-youtube"></i></a>
-        
+
+
+        <div class="foot-parts">
+
+          <div class="foot-parts-first">
+            <img src="/photos/umeed_logo.png" alt="">
+            <div class="foot-parts-first-name">
+              <p>UMEED</p>
+              
+            </div>
+            <div class="foot-parts-first-contact">
+              <p>Churk, Robertsganj, Sonbhadra, Up 231206 <a href="https://www.google.com/maps/place/Umeed/@24.638778,83.084129,17z/data=!4m6!3m5!1s0x398ef11a2e983fc5:0xdcd38ca0f636dd0f!8m2!3d24.6387776!4d83.0841286!16s%2Fg%2F11vf8rmg4q?hl=en&entry=ttu" target="_blank"><i class="fa-solid fa-location-dot fa-beat"></i></a></p>
+              <p><i class="fa-solid fa-phone"></i>           9889224685</p>
+              <p><i class="fa-regular fa-envelope"></i>  priyanshukushwaha311@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="foot-social-links">
+            <a href="https://www.facebook.com/umeedrecsonbhadra/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/umeed_recs/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@umeed3124" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/company/recsonbhadraumeed/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+
+          <div class="foot-parts-temp">
+            <div class="DateAndTime">
+
+            </div>
+            <div class="foot-temp">
+              <p> <i class="fa-solid fa-temperature-full fa-beat"></i> Temp <%=temperatureData%> °C</p></div>
+              <p></p>
+            </div>
+
+          </div>
+
+          <div class="credit"> 
+            <p>Made with <i class="fa-solid fa-heart fa-beat" style="color: #ff0000;"></i> by pk78 and team</p>
+          </div>
+          
+        </div>
         
 
 
+        
+        
+
+        
         
     </div>
 </footer>
-<!-- <script>
+<script>
   window.onscroll = function() {myFunction()};
   
   var header = document.getElementById("myhomebar");
@@ -24,63 +68,12 @@
       header.classList.remove("sticky");
     }
   }
-  </script> -->
+  </script>
 
 
-<!-- <script>
-    // function([string1, string2],target id,[color1,color2])    
-consoleText(['UMEED'], 'text',['rebeccapurple']);
-
-function consoleText(words, id, colors) {
-  if (colors === undefined) colors = ['#fff'];
-  var visible = true;
-  var con = document.getElementById('console');
-  var letterCount = 1;
-  var x = 1;
-  var waiting = false;
-  var target = document.getElementById(id)
-  target.setAttribute('style', 'color:' + colors[0])
-  window.setInterval(function() {
-
-    if (letterCount === 0 && waiting === false) {
-      waiting = true;
-      target.innerHTML = words[0].substring(0, letterCount)
-      window.setTimeout(function() {
-        var usedColor = colors.shift();
-        colors.push(usedColor);
-        var usedWord = words.shift();
-        words.push(usedWord);
-        x = 1;
-        target.setAttribute('style', 'color:' + colors[0])
-        letterCount += x;
-        waiting = false;
-      }, 1000)
-    } else if (letterCount === words[0].length + 1 && waiting === false) {
-      waiting = true;
-      window.setTimeout(function() {
-        x = -1;
-        letterCount += x;
-        waiting = false;
-      }, 1000)
-    } else if (waiting === false) {
-      target.innerHTML = words[0].substring(0, letterCount)
-      letterCount += x;
-    }
-  }, 120)
-  window.setInterval(function() {
-    if (visible === true) {
-      con.className = 'console-underscore hidden'
-      visible = false;
-
-    } else {
-      con.className = 'console-underscore'
-
-      visible = true;
-    }
-  }, 400)
-}
-</script> -->
+<script src="/javascript/collapse.js"></script>
 <script src="/javascript/text.js"></script>
 <script src="/javascript/map.js"></script>
+<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
